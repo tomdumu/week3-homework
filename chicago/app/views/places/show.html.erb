@@ -1,0 +1,39 @@
+<html>
+  <h3 aligh="center"><a href=<%= "/places/#{@show_place.id}/edit" %>>Edit this place</a><h3>
+  <h3>Title: <%= @show_place.title %><h3>
+  <hr>
+  <h3>Photo: <%= @show_place.photo_url %><h3>
+  	<img src=<%= @show_place.photo_url %>>
+  <hr>
+  <h3>Admission price: <%= @show_place.admission_price %><h3>
+  <hr>
+  <h3>Description:<h3>
+  <p><%= @show_place.description %><p>
+  <hr>
+  <h3>Add a review<h3>
+  <form action=<%= "/places/#{@show_place.id}/review" %>>
+  <input type="text" name="new_review_title" placeholder="Title">
+  <p><p>
+  <select class="form-control" type="text" name="new_rating" onchange="onChange()" id="star_selector">
+  <option value="1">Star 1</option>
+  <option value="2">Star 2</option>
+  <option value="3">Star 3</option>
+  <option value="4">Star 4</option>
+  <option selected="selected" value="5">Star 5</option>
+  </select>
+  <p><p>
+  <textarea type="text" name="new_review_description" placeholder="Description"></textarea>
+  <p><p>
+  <input type=submit value=submit>
+  </form>
+  <h2>Recent Reviews<h2>
+  <hr>
+  <% if @show_review != nil
+  @show_review.each do |review| %>
+    <p>title: <%= review.title %><p>
+    <p>rating: Star <%= review.rating %><p>
+    <p>description: <%= review.description %><p>
+    <hr>
+  <% end %>
+  <% end %>
+</html>

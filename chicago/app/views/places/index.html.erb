@@ -1,0 +1,13 @@
+<html>
+  <h3 align="center"><a href="/places/new">New Place</a><h3>
+  <ul>
+    <% @places.each do |place| %>
+      <li >
+      	<h3>
+	    <%= link_to place.title, "/places/#{place.id}" %>
+	    <a href=<%= "/places/#{place.id}/delete" %> style="color:red;">delete</a>
+	<h3>
+	  </li>
+    <% end %>
+  </ul>
+</html>
